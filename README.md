@@ -19,4 +19,12 @@
 - [sklearn](https://scikit-learn.org/)
 - [seaborn](https://seaborn.pydata.org/)
 
+## Links
+
+[Github](https://github.com/IsianDreemrr/HackathonGRP19)
+
+[Trello](https://trello.com/b/KPqXSxUh/hackathon-jo)
+
+[SharePoint slides]()
+
 ## Installation
