@@ -15,7 +15,7 @@ export default function Home() {
       <img src="Logo_JO_Paris.jpg" alt="Logo" />
       <div className="contains">
         <h1>JO24 Predictions</h1>
-        <Link to="/rank">Découvrir</Link>
+        <Link to="/test">Découvrir</Link>
       </div>
       <div
         style={{
