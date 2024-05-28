@@ -28,3 +28,27 @@
 [SharePoint slides]()
 
 ## Installation
+
+Create .env file with connection parameters:
+
+```js
+DB_HOST=
+DB_USER=
+DB_PASSWORD=
+DB_DATABASE=
+```
+
+### Back-end
+
+```sh
+cd back
+python app.py
+```
+
+### Front-end
+
+```sh
+cd web-app-front
+npm install
+npm start
+```

@@ -9,13 +9,13 @@ export default function Home() {
           <Link to="/rank">Classement</Link>
         </p>
         <p className="navItem">
-          <Link to="/predict">Prédictions</Link>
+          <Link to="/predictions">Prédictions</Link>
         </p>
       </div>
       <img src="Logo_JO_Paris.jpg" alt="Logo" />
       <div className="contains">
         <h1>JO24 Predictions</h1>
-        <Link to="/rank">Découvrir</Link>
+        <Link to="/test">Découvrir</Link>
       </div>
       <div
         style={{
