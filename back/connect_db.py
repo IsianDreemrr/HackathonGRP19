@@ -1,7 +1,7 @@
-import pymysql, os
+import pymysql
+import os
 from dotenv import load_dotenv
 
-# Charger les variables d'environnement depuis le fichier .env
 load_dotenv()
 
 DB_HOST = os.getenv("DB_HOST")
@@ -9,7 +9,6 @@ DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_DATABASE = os.getenv("DB_DATABASE")
 
-# Fonction pour établir une connexion à la base de données MySQL
 def get_db_connection():
     try:
         conn = pymysql.connect(
@@ -23,25 +22,27 @@ def get_db_connection():
     except pymysql.MySQLError as e:
         print(f"Erreur de connexion à la base de données: {e}")
         return None
-    
-# Fonction pour fermer la connexion à la base de données MySQL
+
 def close_db_connection(conn):
     if conn:
         conn.close()
         print("Connexion fermée")
     else:
         print("Aucune connexion à fermer")
-        
-# Afficher un ligne d'une table
-def get_one_row(conn):
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM olympic_athletes LIMIT 1")
-    row = cursor.fetchone()
-    cursor.close()
-    return row        
 
-# Exemple d'utilisation
-conn = get_db_connection()
-row = get_one_row(conn)
-print(row)
-close_db_connection(conn)
+def execute_query(query, params=None):
+    conn = get_db_connection()
+    if conn:
+        try:
+            with conn.cursor(pymysql.cursors.DictCursor) as cursor:
+                cursor.execute(query, params)
+                result = cursor.fetchall()
+            conn.commit()
+            return result
+        except pymysql.MySQLError as e:
+            print(f"Erreur lors de l'exécution de la requête: {e}")
+            return None
+        finally:
+            close_db_connection(conn)
+    else:
+        return None
