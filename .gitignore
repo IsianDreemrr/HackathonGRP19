@@ -1,1 +1,6 @@
 .env
+env
+back/olympic_athletes.csv
+back/olympic_hosts.csv
+back/olympic_medals.csv
+back/olympic_results.csv
