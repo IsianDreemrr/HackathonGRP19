@@ -15,7 +15,6 @@ table {
 thead tr th {
     letter-spacing: 3px;
     text-align: center;
-    border-collapse: separate !important;
 }
 
 tbody tr td {
