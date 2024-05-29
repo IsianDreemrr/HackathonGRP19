@@ -1,0 +1,76 @@
+.lesTableaux {
+    display: flex;
+    justify-content: space-around;
+}
+
+table {
+    max-width: 80%;
+    margin: auto;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.2rem;
+}
+
+
+thead tr th {
+    letter-spacing: 3px;
+    text-align: center;
+    border-collapse: separate !important;
+}
+
+tbody tr td {
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.flag {
+    font-weight: inherit;
+}
+.flag_head {
+    letter-spacing: 10px;
+}
+
+.rank,
+.gold,
+.silver,
+.bronze,
+.total {
+    text-align: center;
+}
+
+.gold {
+    color: #b8b814;
+}
+
+.silver {
+    color: #b1b2b4;
+}
+
+.bronze {
+    color: #e77a43;
+}
+
+.total {
+    color: #285b99;
+}
+
+.medal {
+    padding: 0 35px;
+}
+
+th,
+td {
+    padding: 10px;
+    color: #4f759a;
+    /* border-bottom: 5px solid #ddd; */
+}
+
+th {
+    background-color: #ecebf0;
+    font-weight: bold;
+    color: #4f759a;
+}
+
+tr:nth-child(even) {
+    background-color: #ecebf0;
+}

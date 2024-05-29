@@ -1,0 +1,12 @@
+.banner {
+    height: 215px;
+    letter-spacing: 2px;
+    color: #FFF;
+    background-color: #37003c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.banner h1 {
+    font-weight: bold;
+}
