@@ -48,15 +48,21 @@ function App() {
                     <tr>
                         <th className="rank_head">RANG</th>
                         <th className="flag_head">PAYS</th>
+                        <th className="gold_head">🥇</th>
+						<th className="silver_head">🥈</th>
+						<th className="bronze_head">🥉</th>
                         <th className="total_head">TOTAL</th>
                     </tr>
                 </thead>
                 <tbody>
                     {filteredCountries.map((country, index) => (
                         <tr key={index} className="row" onClick={() => checkCountry(country.country_code)}>
-                            <td className="rank">{index}</td>
+                            <td className="rank">{index+1}</td>
                             <td className="flag">{country.country_name}</td>
-                            <td className="flag" style={{textAlign: "center"}}>{country.total_medals}</td>
+                            <td className="gold medal">{country.gold_medals}</td>
+                            <td className="silver medal">{country.silver_medals}</td>
+                            <td className="bronze medal">{country.bronze_medals}</td>
+                            <td className="total" style={{textAlign: "center"}}>{country.total_medals}</td>
                         </tr>
                     ))}
                 </tbody>

@@ -17,21 +17,23 @@ def register_routes(app):
 
     # ... autres routes ...
 
-    # Obtenir les 10 meilleurs pays en fonction des médailles totales
+    # Obtenir le classement des pays
     @app.route('/api/classement_pays', methods=['GET'])
     def classement_pays():
-        query = "SELECT country_name, country_code, country_3_letter_code, COUNT(*) AS total_medals FROM olympic_medals GROUP BY country_name, country_code, country_3_letter_code ORDER BY total_medals DESC; "
+        query = """
+        SELECT
+            country_name, country_code, country_3_letter_code,
+            COUNT(*) AS total_medals,
+            SUM(CASE WHEN medal_type = 'GOLD' THEN 1 ELSE 0 END) AS gold_medals,
+            SUM(CASE WHEN medal_type = 'SILVER' THEN 1 ELSE 0 END) AS silver_medals,
+            SUM(CASE WHEN medal_type = 'BRONZE' THEN 1 ELSE 0 END) AS bronze_medals
+        FROM olympic_medals
+        GROUP BY country_name, country_code, country_3_letter_code
+        ORDER BY total_medals DESC;
+        """
         data = execute_query(query)
         return jsonify(data)
 
-
-    # Obtenir le pays et ses joueurs qui ont déjà joués pour leur pays
-    @app.route('/api/pays', methods=['GET'])
-    def fichePays():
-        # Requête pour obtenir le nombre de médailles par type
-        medals_query = "SELECT * FROM olympic_medals LIMIT 3"
-        data = execute_query(medals_query)
-        return jsonify(data)
 
 
     @app.route('/api/all_data', methods=['GET'])
