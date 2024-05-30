@@ -1,5 +1,8 @@
 from flask import jsonify, request
 from connect_db import execute_query
+import pickle
+
+model_country_year = pickle.load(open('./models/medals_y_c_model.pkl', 'rb'))
 
 def register_routes(app):
     
@@ -15,6 +18,18 @@ def register_routes(app):
         data = execute_query(query)
         return jsonify(data)
 
+    @app.route('/api/olympic_medals/<country_id>/<year>', methods=['POST'])
+    def predict_medals_for_year_and_country(country_id, year):
+        prediction = model_country_year.predict([[year, country_id]])
+
+        result = {
+            'country': country_id,
+            'year': year,
+            'gold': prediction[0][0],
+            'silver': prediction[0][1],
+            'bronze': prediction[0][2]
+        }
+        return jsonify(result)
     # ... autres routes ...
 
     # Obtenir le classement des pays
