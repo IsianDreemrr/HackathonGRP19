@@ -1,0 +1,58 @@
+Tables : olympic_hosts
+
+Permet de vérifier dans la table olympic_results les slug_game non présents dans la table olympics_hosts = jeux d'hiver :
+SELECT DISTINCT(slug_game) FROM olympic_results WHERE slug_game NOT IN ( SELECT DISTINCT(game_slug) FROM olympic_hosts ) ORDER BY CAST(SUBSTRING_INDEX(slug_game, '-', -1) AS UNSIGNED);
+
+
+Affiche toutes les lignes qui ont les slug_game hiver:
+SELECT * FROM olympic_results WHERE slug_game NOT IN ( SELECT DISTINCT(game_slug) FROM olympic_hosts ) ORDER BY CAST(SUBSTRING_INDEX(slug_game, '-', -1) AS UNSIGNED);
+
+à corriger : 
+paris-1900 et athens-1896 (game_end_date) != game_year
+
+Story telling
+Tokyo 2020 date de fin en 2021 avec le Covid
+Pas de jeux en 1914 - 1916 - 1918 (1ere guerre mondial)
+
+===
+Tables : olympic_medals
+Permet d'afficher les lignes qui ne sont pas dans hosts (les jeux d'hiver) pour les supprimer:
+SELECT * FROM olympic_medals WHERE slug_game NOT IN (SELECT game_slug FROM olympic_hosts); (total 3778 )
+
+SELECT * FROM olympic_medals WHERE country_code NOT IN (SELECT country_code FROM olympic_results);
+sur chaque champ pour comparer s'il n'ya pas des données différentes sur la results mais tout est ok
+
+
+
+==
+Tables : olympic_results
+
+event_title = clean
+
+discipline_title = clean
+
+event_title = clean mais optimisable (exemple appellation "Duet" "Doubles")
+
+participant_type = clean
+
+medal_type = clean
+
+athlètes = clean
+
+rank equal = 0 = aucune donnée -> à supprimer
+
+rank_position = clean
+
+country_name = [lien d'athlets, des numéros,  None)]" ,  Jr.'
+
+country_code = False, None
+
+country_3_letter_code = des numéros
+
+athlete_url = aucune donnée -> à supprimer
+
+athlete_full_name = aucune donnée -> à supprimer
+
+value_unit = aucune donnée -> à supprimer
+
+value_type = aucune donnée -> à supprimer
