@@ -4,6 +4,12 @@ import pickle
 
 model_country_year = pickle.load(open('./models/medals_y_c_model.pkl', 'rb'))
 
+model_top25_gold = pickle.load(open('./models/top_25_medals_gold.pkl', 'rb'))
+model_top25_silver = pickle.load(open('./models/top_25_medals_silver.pkl', 'rb'))
+model_top25_bronze = pickle.load(open('./models/top_25_medals_bronze.pkl', 'rb'))
+model_top25_DF = pickle.load(open('./models/model_top25_DF.pickle', 'rb')) # Dataframe des 25 premiers pays
+                          
+
 def register_routes(app):
     
     @app.route('/api/olympic_hosts', methods=['GET'])
@@ -29,6 +35,28 @@ def register_routes(app):
             'silver': prediction[0][1],
             'bronze': prediction[0][2]
         }
+        return jsonify(result)
+    
+    # ROUTE ANTOINE PREDICTION TOP 25
+    @app.route('/api/olympic_medals/top25/', methods=['GET'])
+    def predict_medals_for_top25():
+        
+        prediction_gold = model_top25_gold.predict(model_top25_DF[['Year', 'Gold', 'Silver', 'Bronze']])
+        prediction_silver = model_top25_silver.predict(model_top25_DF[['Year', 'Gold', 'Silver', 'Bronze']])
+        prediction_bronze = model_top25_bronze.predict(model_top25_DF[['Year', 'Gold', 'Silver', 'Bronze']])
+
+        result = []
+        i=0
+
+        # Boucle sur les 25 premiers pays pour ajouter les prédictions au résultat
+        for i in range(len(model_top25_DF)):
+            result.append({
+                'country': model_top25_DF['Country'].iloc[i],
+                'gold': prediction_gold[i],
+                'silver': prediction_silver[i],
+                'bronze': prediction_bronze[i]
+            })
+        
         return jsonify(result)
     # ... autres routes ...
 
