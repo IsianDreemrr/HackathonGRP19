@@ -64,7 +64,7 @@ export default function PredictMedals() {
           </button>
         </div>
       </form>
-      {medals !== null && (
+      {medals !== null && medals["gold"] !== undefined && (
         <table>
           <thead>
             <tr>
