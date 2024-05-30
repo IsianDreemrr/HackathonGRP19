@@ -15,7 +15,22 @@ with app.app_context():
     real_data = json_data.get_json()
     # print(real_data)
     medals = pd.DataFrame(real_data)
-    print(medals)
+
+    # Renommer les colonnes si nécessaire pour faciliter l'accès
+    medals.columns = ['','discipline_title', 'slug_game', 'event_title', 'event_gender', 'medal_type', 'participant_type', 'participant_title', 'athlete_url', 'athlete_full_name', 'country_name', 'country_code', 'country_3_letter_code']
+    print(medals.head(100))
+
+    # Créer un DataFrame avec les médailles agrégées par pays et par année
+    df_medals = medals.groupby(['country_name', 'slug_game', 'medal_type']).size().unstack(fill_value=0).reset_index()
+    print(df_medals)
+    # Renommer les colonnes pour plus de clarté
+    df_medals.columns = ['country', 'year', 'bronze', 'gold', 'silver']
+
+    df_medals['year'] = df_medals['year'].apply(lambda x: int(x.split('-')[-1]))
+
+    # Afficher le DataFrame préparé
+    print('final')
+    print(df_medals.head(100))
 
     countries = medals['country'].unique()
     i = 0
