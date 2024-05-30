@@ -52,3 +52,7 @@ cd web-app-front
 npm install
 npm start
 ```
+
+### Génération des modèle pour faire fonctionner la webapp
+
+Il est nécessaire de Run All tous les fichiers .ipynb se trouvant dans le dossier back
