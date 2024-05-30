@@ -4,6 +4,7 @@ import Banner from './components/Banner';
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetchOlympicMedals();
@@ -63,9 +64,17 @@ function App() {
     return flags[country] || '🏳️';
   };
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredCountries = countries.filter(country =>
+    country.country.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="container">
-      <Banner title="MEDAILLES OLYMPIQUES" />
+      <Banner title="MEDAILLES OLYMPIQUES" onSearchChange={handleSearchChange} />
       <table>
         <thead>
           <tr>
@@ -78,7 +87,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {countries.map((country, index) => (
+          {filteredCountries.map((country, index) => (
             <tr key={index}>
               <td className="rank">{country.rank}</td>
               <td className="flag">{country.flag} {country.country}</td>
