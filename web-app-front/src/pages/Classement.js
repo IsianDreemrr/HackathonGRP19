@@ -18,8 +18,8 @@ function App() {
 
     const fetchLesPays = async () => {
         try {
-            const response = await fetch("https://hackathongrp19.onrender.com/api/olympic_medals/top25/api/classement_pays");
-            // const response = await fetch("http://localhost:5000/api/classement_pays");
+            // const response = await fetch("https://hackathongrp19.onrender.com/api/olympic_medals/top25/api/classement_pays");
+            const response = await fetch("http://localhost:5000/api/classement_pays");
             const data = await response.json();
             setLesPays(data);
         } catch (error) {

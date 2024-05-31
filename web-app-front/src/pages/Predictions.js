@@ -13,8 +13,8 @@ function App() {
 
   const fetchOlympicMedals = async () => {
     try {
-      const response = await fetch('https://hackathongrp19.onrender.com/api/olympic_medals/top25');
-      // const response = await fetch('http://127.0.0.1:5000/api/olympic_medals/top25');
+      // const response = await fetch('https://hackathongrp19.onrender.com/api/olympic_medals/top25');
+      const response = await fetch('http://127.0.0.1:5000/api/olympic_medals/top25');
       const data = await response.json();
       // Transform data to include flag and calculate total
       const transformedData = data.map((country) => ({
