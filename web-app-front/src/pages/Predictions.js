@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Table.css';
 import Banner from './components/Banner';
+import Header from './components/Header';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -73,33 +74,36 @@ function App() {
   );
 
   return (
-    <div className="container">
-      <Banner title="MEDAILLES OLYMPIQUES" onSearchChange={handleSearchChange} />
-      <table>
-        <thead>
-          <tr>
-            <th className="rank_head">RANG</th>
-            <th className="flag_head">PAYS</th>
-            <th className="gold_head">🥇</th>
-            <th className="silver_head">🥈</th>
-            <th className="bronze_head">🥉</th>
-            <th className="total_head">TOTAL</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredCountries.map((country, index) => (
-            <tr key={index}>
-              <td className="rank">{country.rank}</td>
-              <td className="flag">{country.flag} {country.country}</td>
-              <td className="gold medal">{country.gold.toFixed(0)}</td>
-              <td className="silver medal">{country.silver.toFixed(0)}</td>
-              <td className="bronze medal">{country.bronze.toFixed(0)}</td>
-              <td className="total">{country.total.toFixed(0)}</td>
+    <>
+      <Header />
+      <div className="container">
+        <Banner title="MEDAILLES OLYMPIQUES" onSearchChange={handleSearchChange} />
+        <table>
+          <thead>
+            <tr>
+              <th className="rank_head">RANG</th>
+              <th className="flag_head">PAYS</th>
+              <th className="gold_head">🥇</th>
+              <th className="silver_head">🥈</th>
+              <th className="bronze_head">🥉</th>
+              <th className="total_head">TOTAL</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {filteredCountries.map((country, index) => (
+              <tr key={index}>
+                <td className="rank">{country.rank}</td>
+                <td className="flag">{country.flag} {country.country}</td>
+                <td className="gold medal">{country.gold.toFixed(0)}</td>
+                <td className="silver medal">{country.silver.toFixed(0)}</td>
+                <td className="bronze medal">{country.bronze.toFixed(0)}</td>
+                <td className="total">{country.total.toFixed(0)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 
