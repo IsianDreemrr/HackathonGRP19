@@ -4,7 +4,7 @@ from routes import register_routes
 
 app = Flask(__name__)
 # CORS(app)
-CORS(app, resources={r"/*": {"origins": "https://6659acc8497f3a1d9caaf899--hackathon-jo-19.netlify.app"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.before_request
 def before_request():
