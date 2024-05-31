@@ -25,7 +25,9 @@
 
 [Trello](https://trello.com/b/KPqXSxUh/hackathon-jo)
 
-[SharePoint slides]()
+[Webapp en ligne](https://6659acc8497f3a1d9caaf899--hackathon-jo-19.netlify.app/)
+
+[Server API flask](https://hackathongrp19.onrender.com/)
 
 ## Installation
 
@@ -36,6 +38,14 @@ DB_HOST=
 DB_USER=
 DB_PASSWORD=
 DB_DATABASE=
+```
+
+### Génération des modèle pour faire fonctionner la webapp
+
+Il est nécessaire de Run All tous les fichiers .ipynb se trouvant dans le dossier back
+
+```sh
+pip install requirements.txt
 ```
 
 ### Back-end
@@ -53,6 +63,17 @@ npm install
 npm start
 ```
 
-### Génération des modèle pour faire fonctionner la webapp
+## Réponses aux questions et analyses de données
 
-Il est nécessaire de Run All tous les fichiers .ipynb se trouvant dans le dossier back
+- Avec Spark : Notebook/Pascal/traitement_csv-non-utilise.ipynb
+  Notebook-Florian/Notebook-Spark.ipynb
+
+- Avec Pandas : Notebook/Antoine/Questions_FILES.ipynb
+
+### Test Deep Learning
+
+- Notebook/Mazine/Prédiction_médailles_pays.ipynb
+
+### Présentation
+
+- Présentation.pdf
