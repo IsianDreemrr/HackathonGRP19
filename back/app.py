@@ -1,10 +1,20 @@
-from flask import Flask
+from flask import Flask, request, after_this_request
 from flask_cors import CORS
 from routes import register_routes
 
 app = Flask(__name__)
 # CORS(app)
 CORS(app, resources={r"/*": {"origins": "https://6659acc8497f3a1d9caaf899--hackathon-jo-19.netlify.app"}})
+
+@app.before_request
+def before_request():
+    @after_this_request
+    def add_headers(response):
+        response.headers.add('Access-Control-Allow-Origin', request.headers.get('Origin'))
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+        response.headers.add('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
+        return response
 
 register_routes(app)
 
