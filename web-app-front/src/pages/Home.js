@@ -1,22 +1,17 @@
 import { Link } from "react-router-dom";
+import Header from "./components/Header";
 import "../styles/Home.css";
 
 export default function Home() {
   return (
     <div id="home">
-      <div className="nav">
-        <p className="navItem">
-          <Link to="/predict-medals">Classement</Link>
-        </p>
-        <p className="navItem">
-          <Link to="/predictions">Prédictions</Link>
-        </p>
-      </div>
+      <Header />
       <img src="Logo_JO_Paris.jpg" alt="Logo" />
       <div className="contains">
         <h1>JO24 Predictions</h1>
         <Link to="/classement">Classement</Link>
         <Link to="/predictions">Prédictions</Link>
+        <Link to="/prediction-pays-sport">Classement sports spécifiques</Link>
       </div>
       <div
         style={{

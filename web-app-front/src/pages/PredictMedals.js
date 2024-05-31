@@ -2,6 +2,7 @@ import Banner from "./components/Banner";
 import countries from "../data/contries.json";
 import { useState } from "react";
 import axios from "axios";
+import Header from "./components/Header";
 
 export default function PredictMedals() {
   const [donnees, setDonnees] = useState(countries);
@@ -26,6 +27,7 @@ export default function PredictMedals() {
   console.log(donnees);
   return (
     <div>
+      <Header />
       <Banner title="PREDICTION DU NOMBRE DE MEDAILLES OLYMPIQUES" />
       <form action="{{ url_for('predict')}}" method="post">
         <div className="left">
