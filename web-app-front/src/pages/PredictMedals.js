@@ -14,7 +14,8 @@ export default function PredictMedals() {
     const year = document.getElementById("OGyear").value;
     try {
       const data = await axios
-        .post(`http://localhost:5000/api/olympic_medals/${pays}/${year}`)
+        .post(`https://hackathongrp19.onrender.com/api/olympic_medals/top25/api/olympic_medals/${pays}/${year}`)
+        // .post(`http://localhost:5000/api/olympic_medals/${pays}/${year}`)
         .then((response) => {
           console.log(response.data);
           setMedals(response.data);

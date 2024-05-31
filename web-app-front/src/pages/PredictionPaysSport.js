@@ -12,7 +12,8 @@ const ClassementPaysSport = () => {
     useEffect(() => {
         const fetchDisciplines = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/all_disciplines');
+                const response = await axios.get('https://hackathongrp19.onrender.com/api/olympic_medals/top25/api/all_disciplines');
+                // const response = await axios.get('http://localhost:5000/api/all_disciplines');
                 setDisciplines(response.data);
             } catch (error) {
                 console.error('Erreur lors de la récupération des disciplines :', error);
@@ -26,7 +27,8 @@ const ClassementPaysSport = () => {
         setLoading(true);
         if (selectedSport) {
             try {
-                const response = await axios.post('http://localhost:5000/api/classement_pays_sport', { sport: selectedSport });
+                const response = await axios.post('https://hackathongrp19.onrender.com/api/olympic_medals/top25/api/classement_pays_sport', { sport: selectedSport });
+                // const response = await axios.post('http://localhost:5000/api/classement_pays_sport', { sport: selectedSport });
                 setClassement(response.data);
             } catch (error) {
                 console.error('Erreur lors de la récupération des données :', error);
@@ -37,7 +39,8 @@ const ClassementPaysSport = () => {
 
     const sendSportToBackend = async () => {
         try {
-            await axios.get(`http://localhost:5000/api/get-sport?sport=${sport}`);
+            await axios.get(`https://hackathongrp19.onrender.com/api/olympic_medals/top25/api/get-sport?sport=${sport}`);
+            // await axios.get(`http://localhost:5000/api/get-sport?sport=${sport}`);
             console.log('Sport envoyé avec succès !');
         } catch (error) {
             console.error('Erreur lors de l\'envoi du sport :', error);
