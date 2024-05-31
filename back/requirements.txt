@@ -1,0 +1,16 @@
+entrypoints
+fastapi
+Flask
+Flask-Cors
+httpcore
+httpx
+packaging
+pyOpenSSL
+python-dotenv
+SQLAlchemy
+websocket-client
+werkzeug
+PyMySQL
+Cython
+scikit-learn
+pandas
